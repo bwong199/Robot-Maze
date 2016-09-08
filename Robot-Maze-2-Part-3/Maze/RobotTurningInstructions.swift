@@ -31,7 +31,8 @@ extension ControlCenter {
             robot.move()
             
         } else {
-            randomlyRotateRightOrLeft(robot)        }
+            turnTowardClearPath(robot, wallInfo: wallInfo)
+        }
         
         // Step 3.2
         // TODO: Instead of calling randomlyRotateRightOrLeft() call turnTowardClearPath() when the robot has randomly chosen to rotate.
@@ -46,8 +47,10 @@ extension ControlCenter {
         } else if robot.direction == .Up && wallInfo.left {
             robot.rotateRight()
         } else if robot.direction == .Right && wallInfo.up {
-            robot.rotateLeft()
+            robot.rotateRight()
         } else if robot.direction == .Down && wallInfo.right {
+            robot.rotateRight()
+        } else {
             robot.rotateLeft()
         }
     }

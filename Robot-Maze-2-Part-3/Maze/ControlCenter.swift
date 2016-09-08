@@ -8,12 +8,12 @@
 import UIKit
 
 class ControlCenter {
-
+    
     var mazeController: MazeController!
-
+    
     func moveComplexRobot(myRobot: ComplexRobotObject) {
-      
-    // You may want to paste your Part 2 implementation of moveComplexRobot() here
+        
+        // You may want to paste your Part 2 implementation of moveComplexRobot() here
         
         // You may want to paste your Part 1 implementation of moveComplexRobot() here
         
@@ -43,8 +43,7 @@ class ControlCenter {
         // Step 2.2b
         // Test whether the values of the above constants are correct
         
-        
-        
+                
         // Step 2.3a
         // Three-way Path - else-if statements
         
@@ -55,63 +54,59 @@ class ControlCenter {
         
         if isThreeWayJunction && robotIsBlocked {
             randomlyRotateRightOrLeft(myRobot)
-        } else {
+        } else if isThreeWayJunction && !robotIsBlocked{
             continueStraightOrRotate(myRobot, wallInfo: myWallInfo)
             
         }
-        
-        
-        
-        // Step 2.3b
-        // Two-way Path - else-if statements
-        
-        // TODO: If the robot encounters a two way path and there is NO wall ahead it should continue forward.
-        
-        
-        
-        // TODO: If the robot encounters a two way path and there IS a wall ahead, it should randomly rotate.
-        
-        if isTwoWayPath && !robotIsBlocked {
-            myRobot.move()
-        } else {
-            randomlyRotateRightOrLeft(myRobot)
             
-        }
-        
-        // Step 2.3c
-        // Dead end - else-if statements
-        
-        // TODO: If the robot encounters a dead end and there is NO wall ahead it should move forward.
-        
-        
-        
-        
-        // TODO: If the robot encounters a dead end and there IS a wall ahead it should rotateRight().
-        
-        if isDeadEnd && !robotIsBlocked {
+            // Step 2.3b
+            // Two-way Path - else-if statements
+            
+            // TODO: If the robot encounters a two way path and there is NO wall ahead it should continue forward.
+            
+            // TODO: If the robot encounters a two way path and there IS a wall ahead, it should randomly rotate.
+            
+        else if isTwoWayPath && !robotIsBlocked {
             myRobot.move()
-        } else {
-            myRobot.rotateRight()
-        }
-
-        
-        // Step 3.2
-        // Two-way Path - else-if statements
-        
-        if isTwoWayPath && !robotIsBlocked {
-            myRobot.move()
-        } else {
+        } else if  isTwoWayPath && robotIsBlocked {
             turnTowardClearPath(myRobot, wallInfo: myWallInfo)
         }
+            
+            // Step 2.3c
+            // Dead end - else-if statements
+            
+            // TODO: If the robot encounters a dead end and there is NO wall ahead it should move forward.
+            
+            // TODO: If the robot encounters a dead end and there IS a wall ahead it should rotateRight().
+            
+        else if isDeadEnd && !robotIsBlocked {
+            myRobot.move()
+        } else if isDeadEnd && robotIsBlocked{
+            myRobot.rotateRight()
+        }
+            
         
-        // TODO: If the robot encounters a two way path and there is NO wall ahead it should continue forward.
+            // Step 3.2
+            // Two-way Path - else-if statements
+            
+            
+            // TODO: If the robot encounters a two way path and there is NO wall ahead it should continue forward.
+            
+            // TODO: If the robot encounters a two way path and there IS a wall ahead, it should turn in the direction of the clear path.
+            
+        else if isTwoWayPath && !robotIsBlocked {
+            myRobot.move()
+        } else if isTwoWayPath && robotIsBlocked{
+            turnTowardClearPath(myRobot, wallInfo: myWallInfo)
         
-        // TODO: If the robot encounters a two way path and there IS a wall ahead, it should turn in the direction of the clear path.
+        }
+        
+        
         
     }
     
     func previousMoveIsFinished(robot: ComplexRobotObject) {
-            self.moveComplexRobot(robot)
+        self.moveComplexRobot(robot)
     }
     
 }
