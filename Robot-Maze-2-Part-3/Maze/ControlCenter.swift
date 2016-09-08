@@ -22,11 +22,7 @@ class ControlCenter {
         let robotIsBlocked = isFacingWall(myRobot, direction: myRobot.direction)
         let myWallInfo = checkWalls(myRobot)
         
-        if robotIsBlocked {
-            randomlyRotateRightOrLeft(myRobot)
-        } else {
-            myRobot.move()
-        }
+
         
         // Step 2.2a
         // Categorize the robot's current location based on the number of walls
@@ -94,12 +90,7 @@ class ControlCenter {
             
             // TODO: If the robot encounters a two way path and there IS a wall ahead, it should turn in the direction of the clear path.
             
-        else if isTwoWayPath && !robotIsBlocked {
-            myRobot.move()
-        } else if isTwoWayPath && robotIsBlocked{
-            turnTowardClearPath(myRobot, wallInfo: myWallInfo)
-        
-        }
+    
         
         
         
